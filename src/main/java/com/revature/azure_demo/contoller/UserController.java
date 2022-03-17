@@ -50,7 +50,7 @@ public class UserController {
         return new ResponseEntity<User>(found.get(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/user/username/{username}")
+    @GetMapping(value="/users/username/{username}")
     public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username){
         Optional<User> found = userService.getUserByUsername(username);
         if(found.isEmpty())
