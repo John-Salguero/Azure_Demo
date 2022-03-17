@@ -16,7 +16,12 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping(value="/add")
+    @GetMapping(value="/")
+    public String helloPage() {
+        return "These Are Not The Droids You are looking for!";
+    }
+
+    @PostMapping(value="/users")
     public ResponseEntity<User> addUser(@RequestBody User newUser) {
         try {
             User created = userService.addUser(newUser);
@@ -35,10 +40,6 @@ public class UserController {
         return new ResponseEntity<Iterable<User>>(userService.getAllUsers(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/")
-    public String helloPage() {
-        return "These Are Not The Droids You are looking for!";
-    }
 
     @GetMapping(value="/users/id/{id}")
     public ResponseEntity<User> getUsers(@PathVariable("id") int id) {
